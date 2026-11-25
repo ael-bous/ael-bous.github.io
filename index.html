@@ -1,433 +1,372 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ayoub EL Bousairi - Portfolio</title>
-    <link
-      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <header class="header">
-      <a href="#home" class="logo">Ayoub <span>EL Bousairi</span></a>
-      <i class="bx bx-menu" id="menu-icon"></i>
-      <nav class="navbar">
-        <a href="#home" class="active">Home</a>
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#experience">Experience</a>
-        <a href="#services">Services</a>
-        <a href="#projects">Projects</a>
-      </nav>
-      <a href="#contact" class="gradient-btn">Contact Me</a>
-    </header>
+<!doctype html>
+<html lang="fr" data-type="service" data-radius="soft" data-buttons="block" data-motion>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ayoub El Bousairi : marketing digital et développement web à Casablanca</title>
+<meta name="description" content="Chargé de marketing digital chez Amiyas Import : réseaux sociaux, contenus, campagnes Meta Ads et le site de l'entreprise, construit de A à Z.">
+<meta name="author" content="Ayoub El Bousairi">
+<link rel="canonical" href="https://ael-bous.github.io/">
+<meta property="og:type" content="profile">
+<meta property="og:locale" content="fr_MA">
+<meta property="og:url" content="https://ael-bous.github.io/">
+<meta property="og:title" content="Ayoub El Bousairi : marketing digital et développement web">
+<meta property="og:description" content="Réseaux sociaux, contenus, Meta Ads et sites web, à Casablanca.">
+<meta property="og:image" content="https://ael-bous.github.io/share.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#e8e8e3">
+<meta name="site-kind" content="other">
+<meta name="page-type" content="service">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Ayoub El Bousairi",
+  "jobTitle": "Chargé de marketing digital",
+  "url": "https://ael-bous.github.io/",
+  "image": "https://ael-bous.github.io/img/ayoub-portrait.jpg",
+  "email": "mailto:elbousairiayoub.pro@gmail.com",
+  "worksFor": { "@type": "Organization", "name": "Amiyas Import", "url": "https://amiyasimport.com" },
+  "address": { "@type": "PostalAddress", "addressLocality": "Casablanca", "addressCountry": "MA" },
+  "alumniOf": [
+    { "@type": "EducationalOrganization", "name": "ISTA Hay Hassani 1 (OFPPT)" },
+    { "@type": "EducationalOrganization", "name": "1337 Coding School" }
+  ],
+  "knowsLanguage": ["ar", "fr", "en"],
+  "knowsAbout": ["Marketing digital", "Meta Ads", "Community management", "Développement web", "Laravel", "React"],
+  "sameAs": ["https://www.linkedin.com/in/ayoub-el-bousairi", "https://github.com/ael-bous"]
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/system.css">
+<link rel="stylesheet" href="assets/ui/cards.css">
+<link rel="stylesheet" href="assets/motion/motion.css">
+<link rel="stylesheet" href="assets/layout/layout.css">
+<link rel="stylesheet" href="assets/icons/icon.css">
+<style>
+:root {
+  --p-bg: #e8e8e3; --p-surface: #dcdcd6; --p-ink: #181715; --p-muted: #5c5b56;
+  --p-accent: #bfb21a; --p-accent-ink: #181715; --p-action: #181715; --p-action-ink: #e8e8e3;
+  --p-inv-bg: #181715; --p-inv-surface: #242321; --p-inv-ink: #e8e8e3; --p-inv-muted: #91908d;
+  --p-inv-accent: #bfb21a; --p-inv-accent-ink: #181715; --p-inv-action: #bfb21a; --p-inv-action-ink: #181715;
+  --font-display: "Onest", system-ui, sans-serif;
+  --font-text: "Onest", system-ui, sans-serif;
+  --display-weight: 400;
+  --display-tracking: -0.035em;
+  --display-tracking-xl: -0.04em;
+}
+</style>
+<link rel="stylesheet" href="assets/ui/base.css">
+<link rel="stylesheet" href="assets/diagrams/diagram.css">
+<script>document.documentElement.classList.add('m-enter');setTimeout(()=>document.documentElement.classList.add('m-enter-done'),700)</script>
+<script>document.documentElement.classList.add('mo-js');setTimeout(()=>document.documentElement.classList.add('mo-safe'),2500)</script>
+<link rel="modulepreload" href="assets/moments/moments.js">
+<link rel="modulepreload" href="assets/moments/lib.js">
+<link rel="modulepreload" href="assets/moments/pinned-chapters/moment.js">
+<link rel="modulepreload" href="assets/moments/word-highlight/moment.js">
+<!-- page CSS: only what sits inside a visual -->
+<style>
+  /* the portrait sits on its own ink ground */
+  .hero__media { background: #181715; }
+  /* the still hub diagram on its panel */
+  .panel--dg { height: 460px; display: grid; place-items: center; padding: var(--s-5); }
+  .panel--dg .dg { width: 100%; height: 100%; }
+  /* the phone: amiyasimport.com as a visitor sees it */
+  .device-stage { height: 520px; display: grid; place-items: center; overflow: hidden; }
+  .device-stage { grid-auto-flow: column; gap: var(--s-6); }
+  .device { width: 240px; aspect-ratio: 390 / 844; border-radius: 34px; padding: 8px; background: #181715; box-shadow: 0 0 0 1px rgba(24,23,21,.2); }
+  .device > img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top; border-radius: 26px; }
+  .code-copy .ic-chip { list-style: none; }
+  .code-copy .ic-chip-row { margin: 0; padding: 0; }
+  @media (max-width: 1279px) { .device-stage { height: 460px; } .device { width: 200px; } }
+  @media (max-width: 1023px) { .panel--dg { height: 420px; } }
+  @media (max-width: 639px) { .panel--dg { height: 320px; padding: var(--s-3); } .device-stage { height: 400px; gap: var(--s-3); } .device { width: 150px; border-radius: 24px; padding: 6px; } .device > img { border-radius: 19px; } }
+  /* the direct channels beside the form: soft tiles, no rules */
+  .channels { display: grid; gap: var(--s-3); margin: 0; padding: 0; list-style: none; align-content: start; }
+  .channels > li > a { display: flex; align-items: center; gap: var(--s-4); min-height: 76px; padding: var(--s-3) var(--s-5) var(--s-3) var(--s-3); background: var(--surface); border-radius: var(--r-md); text-decoration: none; color: var(--ink); }
+  .channels .ic-tile { --tile: 48px; background: var(--bg); flex: none; }
+  .channels .ch__name { display: grid; gap: 2px; font-weight: 500; min-width: 0; }
+  .channels .ch__name small { font-weight: 400; color: var(--muted); font-size: var(--t-small); overflow-wrap: anywhere; }
+  .channels .ch__go { margin-left: auto; flex: none; width: 20px; height: 20px; color: var(--muted); transition: transform var(--dur, .2s) var(--ease, ease); }
+  @media (hover: hover) and (pointer: fine) { .channels > li > a:hover .ch__go { transform: translate(2px, -2px); color: var(--ink); } }
+  @media (min-width: 640px) and (max-width: 1023px) { .channels { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  /* the legal row on the footer's columns */
+  .footer__legal { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter, 24px); align-items: center; }
+  .footer__legal > :nth-child(1) { grid-column: 1 / span 4; }
+  .footer__legal > :nth-child(2) { grid-column: 5 / span 2; }
+  .footer__legal > :nth-child(3) { grid-column: 7 / -1; }
+  @media (max-width: 1023px) { .footer__legal { display: flex; flex-direction: column; align-items: flex-start; gap: var(--s-3); } }
+  /* the chapters: top-aligned when live; shorter visuals at rest on a tablet so the steps hold one screen */
+  #projet.is-live > .mo-pc__grid { align-content: start; padding-top: var(--padt); }
+  @media (min-width: 640px) and (max-width: 1023px) { #projet:not(.is-live) .mo-pc__visual > img { max-height: 16svh; } }
+  @media (max-width: 639px) { #projet:not(.is-live) { min-height: 200lvh; } }
+  /* marketing on a tablet: the diagram panel as tall as the rows beside it */
+  @media (min-width: 640px) and (max-width: 1023px) { #marketing .panel--dg { height: 300px; } .device-stage { height: 380px; } .device { width: 165px; border-radius: 26px; } }
+  /* the two timelines */
+  .timeline h3 { font: 500 var(--t-small)/1.4 var(--font-text); color: var(--muted); margin-bottom: var(--s-5); }
+  @media (min-width: 1024px) and (max-width: 1279px) { .timeline h3 { margin-bottom: var(--s-3); } }
+  .timeline .rows__value { color: var(--ink); }
+  /* the two columns share row lines: each step sits level with its neighbour; the date under the title */
+  @media (min-width: 1280px), (max-width: 639px) {
+    .timeline .rows > li { grid-template-columns: minmax(0, 1fr); row-gap: var(--s-1); }
+    .timeline .rows__value { grid-column: 1; grid-row: 2; text-align: left; }
+    .timeline .rows > li > p { grid-row: 3; }
+  }
+  @media (min-width: 1280px) {
+    .timeline .tl-col { grid-row: 1 / span 4; display: grid; grid-template-rows: subgrid; }
+    .timeline .tl-col > ul { display: contents; }
+    .timeline .cv-sheet { grid-row: 1 / span 4; }
+  }
+  /* the CV's first page, linked to the PDF */
+  .cv-sheet { display: block; align-self: start; background: #fff; border-radius: var(--r-sm, 6px); overflow: hidden; box-shadow: 0 1px 2px rgba(24,23,21,.08), 0 18px 40px -18px rgba(24,23,21,.28); transition: transform var(--dur, .2s) var(--ease, ease), box-shadow var(--dur, .2s) var(--ease, ease); }
+  .cv-sheet > img { display: block; width: 100%; height: auto; }
+  @media (hover: hover) and (pointer: fine) { .cv-sheet:hover { transform: translateY(-2px); box-shadow: 0 1px 2px rgba(24,23,21,.08), 0 24px 48px -18px rgba(24,23,21,.34); } }
+  .cv-sheet:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; }
+  @media (min-width: 640px) and (max-width: 1279px) { .timeline .cv-sheet { display: none; } .timeline > .tl-col:nth-child(1) { grid-column: 1 / span 6; } .timeline > .tl-col:nth-child(2) { grid-column: 7 / span 6; } }
+  @media (max-width: 639px) { .cv-sheet { max-width: none; } .cv-sheet > img { aspect-ratio: 4 / 3; object-fit: cover; object-position: top; } }
+  .form textarea { min-height: 140px; resize: vertical; }
+  .form .field--trap { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+</style>
+</head>
+<body>
+<!-- type: service (a person hired for marketing and web work)
+     deal: hero split, nav nav-split, close close-type, footer footer-columns (footer-visit re-dealt: no door),
+     rhythm space, buttons block, mark stack, grounds none
+     palette paper-grey-brass: newsprint ground and a brass accent, the stock and ink of the flyers, catalogues
+     and brochures the work produces. type onest (newsreader dealt first, re-dealt: it failed hero-lines at 1440).
+     moments: pinned-chapters on #projet, word-highlight on #methode -->
 
-    <section class="home" id="home">
-      <div class="home-content">
-        <h1>Hi, It's <span>Ayoub</span></h1>
-        <h3>I'm a <span>Full Stack Developer</span></h3>
-        <p>
-          I'm a passionate web developer with expertise in creating dynamic,
-          responsive websites and applications. I love turning complex problems
-          into simple, beautiful designs.
-        </p>
-        <div class="social-icons">
-          <a href="https://github.com/ael-bous"
-            ><i class="bx bxl-github"></i
-          ></a>
-          <a href="http://linkedin.com/in/ayoub-el-bousairi"
-            ><i class="bx bxl-linkedin-square"></i
-          ></a>
-          <!-- <a href="https://www.instagram.com/ayoub_el_bi"
-            ><i class="bx bxl-instagram-alt"></i
-          ></a> -->
-          <a href="https://wa.me/212630132957"
-            ><i class="bx bxl-whatsapp"></i
-          ></a>
-        </div>
-        <div class="btn-group">
-          <a href="#contact" class="btn">Hire Me</a>
-          <a
-            href="Ayoub_El_Bousairi•CV.pdf"
-            download="Ayoub_El_Bousairi•CV.pdf"
-            class="btn"
-          >
-            <i class="bx bx-download"></i> Download CV
-          </a>
+<header class="nav nav--split">
+  <div class="wrap nav__bar">
+    <a class="skip-link" href="#top">Aller au contenu</a>
+    <a class="nav__logo" href="#top"><span class="mark" data-mark="stack" aria-hidden="true"></span>Ayoub El Bousairi</a>
+    <nav class="nav__links" aria-label="Principal">
+      <div class="nav__item"><a class="nav__link" href="#projet">Projet</a></div>
+      <div class="nav__item"><a class="nav__link" href="#marketing">Marketing</a></div>
+      <div class="nav__item"><a class="nav__link" href="#parcours">Parcours</a></div>
+      <div class="nav__item"><a class="nav__link" href="#code">Code</a></div>
+    </nav>
+    <div class="nav__actions">
+      <a class="btn btn--primary" href="#message">Envoyer un message</a>
+    </div>
+    <button class="nav__toggle" type="button" aria-expanded="false" aria-label="Menu">
+      <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M2 5h14M2 13h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero hero--split" data-enter aria-labelledby="hero-h">
+    <div class="wrap"><div class="hero-text grid hero__grid">
+      <div class="hero__text span-5">
+        <p class="hero__kicker"><span class="dot" aria-hidden="true"></span>Chez Amiyas Import depuis janvier 2026</p>
+        <h1 id="hero-h">Marketing digital et sites web</h1>
+        <p class="hero__lead">Je suis Ayoub, à Casablanca. Je gère les réseaux sociaux, les contenus et les campagnes Meta Ads d'un importateur de machines, et j'ai construit son site de A à Z.</p>
+        <div class="btn-row">
+          <a class="btn btn--primary" href="#message">Envoyer un message<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a>
+          <a class="btn btn--secondary" href="Ayoub-El-Bousairi-CV.pdf" target="_blank" rel="noopener">Lire le CV</a>
         </div>
       </div>
-      <div class="home-img">
-        <div class="profile-container">
-          <div class="profile-ring"></div>
-          <img src="images/me.png" alt="Ayoub EL Bousairi" />
+      <div class="hero__media span-6 start-7">
+        <img src="img/ayoub-portrait.webp" srcset="img/ayoub-portrait-560.webp 560w, img/ayoub-portrait.webp 900w" sizes="(max-width: 639px) 92vw, 628px" width="900" height="1026" alt="Portrait d'Ayoub El Bousairi en costume sombre et cravate noire" style="--ly-pos: 50% 38%; --ly-pos-phone: 50% 30%" fetchpriority="high" data-source="client" data-subject="portrait of Ayoub El Bousairi">
+        <div class="ly-float">
+          <div class="ly-float__row"><span>Site construit de A à Z</span><span>En ligne</span></div>
+          <div class="ly-float__title">amiyasimport.com</div>
         </div>
       </div>
-    </section>
+    </div></div>
+  </section>
 
-    <section class="about" id="about">
-      <h2 class="heading">About <span>Me</span></h2>
-      <div class="about-content">
-        <p>
-          I'm a dedicated web developer with a passion for creating innovative
-          digital solutions. With expertise in front-end and back-end
-          technologies, I build websites and applications that are both
-          functional and visually appealing.
-        </p>
-        <p>
-          My journey in web development started 3 years ago, and since then I've
-          worked on various projects ranging from simple landing pages to
-          complex web applications. I'm always eager to learn new technologies
-          and improve my skills.
-        </p>
+  <section class="section" id="projet" style="--h: 2" data-moment="pinned-chapters" aria-labelledby="projet-h">
+    <div class="wrap mo-pc__grid">
+      <div class="mo-pc__text">
+        <h2 id="projet-h">Le site d'Amiyas Import, de A à Z</h2>
+        <ol class="mo-pc__steps">
+          <li class="mo-pc__step">
+            <h3>Développer et mettre en ligne le site</h3>
+            <p>Accueil, produits, services et contact : le code, le nom de domaine, l'hébergement et le référencement, du premier fichier à la mise en ligne.</p>
+            <figure class="mo-pc__visual"><img src="img/amiyas-home.webp" srcset="img/amiyas-home-720.webp 720w, img/amiyas-home.webp 1440w" sizes="(max-width: 1023px) 92vw, 628px" alt="Page d'accueil d'amiyasimport.com : une machine de découpe laser fibre sous le menu principal" width="1440" height="900" loading="lazy" data-source="client" data-subject="amiyasimport.com home page"></figure>
+          </li>
+          <li class="mo-pc__step">
+            <h3>Classer un catalogue de machines</h3>
+            <p>Sept familles, des routeurs CNC aux lasers fibre et CO₂, rangées dans un menu qui mène à chaque machine en deux clics.</p>
+            <figure class="mo-pc__visual"><img src="img/amiyas-menu.webp" srcset="img/amiyas-menu-720.webp 720w, img/amiyas-menu.webp 1440w" sizes="(max-width: 1023px) 92vw, 628px" alt="Le menu Produits ouvert sur sept familles de machines industrielles" width="1440" height="900" loading="lazy" data-source="client" data-subject="amiyasimport.com product menu"></figure>
+          </li>
+          <li class="mo-pc__step">
+            <h3>Rédiger les fiches techniques</h3>
+            <p>Une page par machine, avec ses photos, sa fiche technique en PDF et une demande de devis ou un message WhatsApp en un clic.</p>
+            <figure class="mo-pc__visual"><img src="img/amiyas-product.webp" srcset="img/amiyas-product-720.webp 720w, img/amiyas-product.webp 1440w" sizes="(max-width: 1023px) 92vw, 628px" alt="Fiche produit d'une machine laser fibre avec les boutons Demander un devis et PDF technique" width="1440" height="900" loading="lazy" data-source="client" data-subject="amiyasimport.com product page"></figure>
+          </li>
+        </ol>
+        <p><a class="link" href="https://amiyasimport.com" target="_blank" rel="noopener">Voir amiyasimport.com</a></p>
       </div>
-    </section>
+      <div class="mo-pc__visuals frame"></div>
+    </div>
+  </section>
 
-    <section class="skills" id="skills">
-      <h2 class="heading">My <span>Skills</span></h2>
-      <div class="skills-container">
-        <div class="skill-category">
-          <h3>Frontend</h3>
-          <div class="skill-items">
-            <div class="skill-item">HTML5</div>
-            <div class="skill-item">CSS3</div>
-            <div class="skill-item">JavaScript</div>
-            <div class="skill-item">React</div>
-          </div>
-        </div>
-        <div class="skill-category">
-          <h3>Backend</h3>
-          <div class="skill-items">
-            <div class="skill-item">PHP</div>
-            <div class="skill-item">Laravel</div>
-          </div>
-        </div>
-        <div class="skill-category">
-          <h3>Database & Tools</h3>
-          <div class="skill-items">
-            <div class="skill-item">MySQL</div>
-            <div class="skill-item">MongoDB</div>
-            <div class="skill-item">Git</div>
-          </div>
-        </div>
+  <section class="section statement" id="methode" data-moment="word-highlight" aria-label="Méthode">
+    <div class="wrap">
+      <p class="t-label">Méthode</p>
+      <p class="mo-wh__text">Je prépare la publication, la campagne Meta Ads et la page web qui reçoit les demandes. Le message et le site gardent la même voix, parce qu'ils sortent <strong>des mêmes mains</strong>.</p>
+    </div>
+  </section>
+
+  <section class="section" id="marketing" style="--hm: 2" aria-labelledby="marketing-h">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="marketing-h">Le marketing d'une entreprise industrielle</h2>
+        <p>Chez Amiyas Import, je tiens la communication de l'entreprise sur quatre réseaux et sur WhatsApp Business.</p>
       </div>
-    </section>
-
-    <section class="experience" id="experience">
-      <h2 class="heading">My <span>Journey</span></h2>
-      <div class="experience-container">
-        <div class="experience-column">
-          <h3>Education</h3>
-          <div class="experience-item">
-            <h4>Full Stack Web Development Diploma</h4>
-            <div class="company">OFPPT</div>
-            <div class="date">2022 - 2024</div>
-            <p>
-              Trained in full-stack development using HTML5, CSS3, JavaScript,
-              PHP, and Laravel. Gained experience in database management, API
-              integration, and Git. Built a service marketplace platform
-            </p>
-          </div>
-          <div class="experience-item">
-            <h4>High School Diploma, Physical Sciences</h4>
-            <div class="company">Mohamed Ezzarktouni</div>
-            <div class="date">2020 - 2021</div>
-            <p>
-              Completed intensive science program with coursework in Mechanics,
-              Electricity & Magnetism, Modern Physics, and Applied Mathematics.
-              Developed strong analytical and problem-solving skills.
-            </p>
-          </div>
-        </div>
-        <div class="experience-column">
-          <h3>Experience</h3>
-          <div class="experience-item">
-            <h4>Full Stack Web Development Intern</h4>
-            <div class="company">I-gouvernancia</div>
-            <div class="date">oct 2025 - Present</div>
-            <p>
-              Applying full-stack development skills to digital transformation
-              projects. Gaining real-world experience in web development while
-              contributing to governance-focused solutions.
-            </p>
-          </div>
-          <div class="experience-item">
-            <h4>1337 Piscine - Intensive C & Shell Programming</h4>
-            <div class="company">1337 Coding School</div>
-            <div class="date">Jul 2025 - Aug 2025</div>
-            <p>
-              Intensive one-month program in C programming, shell scripting, and
-              Linux. Developed algorithms, solved daily coding challenges, and
-              enhanced problem-solving through peer collaboration. Built
-              discipline and resilience in fast-paced coding environment.
-            </p>
-          </div>
-          <div class="experience-item">
-            <h4>Freelance Full-Stack Developer</h4>
-            <div class="company">2024 - 2025</div>
-            <p>
-              Built and delivered complete web applications for clients. Created
-              responsive websites, integrated APIs, managed databases, and
-              collaborated directly with clients to deliver functional solutions
-              on time.
-            </p>
-          </div>
-        </div>
+      <div class="grid grid--top fill">
+        <ul class="rows span-6">
+          <li><span class="rows__name">Réseaux sociaux</span><p>Publications et stories planifiées sur quatre réseaux.</p></li>
+          <li><span class="rows__name">Visuels et imprimés</span><p>Visuels, catalogues, flyers et brochures de machines.</p></li>
+          <li><span class="rows__name">Vidéo</span><p>Montage de vidéos promotionnelles pour les réseaux.</p></li>
+          <li><span class="rows__name">Publicité Meta Ads</span><p>Campagnes Facebook et Instagram, suivies et ajustées.</p></li>
+          <li><span class="rows__name">Demandes clients</span><p>Réponses aux prospects sur WhatsApp, Facebook et Instagram.</p></li>
+        </ul>
+        <div class="panel panel--dg span-6 start-7"><div class="dg" data-diagram><script type="application/json">{"layout":"hub","alt":"Ayoub relie Facebook, Instagram, LinkedIn, TikTok, Meta Ads et WhatsApp Business pour Amiyas Import.","ground":"none","motion":{"pulse":"none"},"center":{"label":"Amiyas Import","icon":"ui:factory"},"spokes":[{"label":"Facebook","icon":"facebook"},{"label":"Instagram","icon":"instagram"},{"label":"LinkedIn","icon":"linkedin"},{"label":"TikTok","icon":"tiktok"},{"label":"Meta Ads","icon":"meta"},{"label":"WhatsApp","icon":"whatsapp"}]}</script></div></div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="services" id="services">
-      <h2 class="heading">My <span>Services</span></h2>
-      <div class="services-container">
-        <div class="service-box">
-          <i class="bx bx-code-alt"></i>
-          <h3>Frontend Development</h3>
-          <p>
-            Building responsive and interactive user interfaces using modern
-            technologies like React, Vue.js, HTML5, CSS3, and JavaScript.
-            Creating seamless user experiences with clean, maintainable code.
-          </p>
-        </div>
-        <div class="service-box">
-          <i class="bx bx-server"></i>
-          <h3>Backend Development</h3>
-          <p>
-            Developing robust server-side applications and RESTful APIs using
-            Node.js, Express, Laravel, and PHP. Database design and management
-            with MySQL and MongoDB for scalable solutions.
-          </p>
-        </div>
-        <div class="service-box">
-          <i class="bx bxs-paint"></i>
-          <h3>UI/UX Design</h3>
-          <p>
-            Creating intuitive and visually appealing user interfaces with
-            user-centered design principles. Wireframing, prototyping, and
-            designing engaging digital experiences that are both beautiful and
-            functional.
-          </p>
-        </div>
+  <section class="section" id="parcours" style="--hm: 2" aria-labelledby="parcours-h">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="parcours-h">Parcours, de l'OFPPT à Amiyas Import</h2>
       </div>
-    </section>
-
-    <section class="projects" id="projects">
-      <h2 class="heading">Latest <span>Projects</span></h2>
-      <div class="projects-container">
-        <div class="project-box" data-project="1">
-          <img src="images/e-commerce.jpg" alt="Project 1" />
-          <div class="project-layer">
-            <h4>E-Commerce Website</h4>
-            <p>
-              Full-featured online store with shopping cart and payment
-              integration.
-            </p>
-            <a href="#"><i class="bx bx-link-external"></i></a>
-          </div>
+      <div class="grid grid--top timeline">
+        <div class="span-4 tl-col">
+          <h3>Expérience professionnelle</h3>
+          <ul class="rows">
+            <li><span class="rows__name">Chargé de marketing digital</span><span class="rows__value">2026, en poste</span><p>Amiyas Import, Casablanca. Site web, réseaux sociaux, contenus, Meta Ads et demandes clients.</p></li>
+            <li><span class="rows__name">Stage en développement web</span><span class="rows__value">Oct. 2025 à janv. 2026</span><p>i-Gouvernancia, Casablanca. Développement, maintenance et tests d'applications web.</p></li>
+            <li><span class="rows__name">Piscine de 1337</span><span class="rows__value">Juil. à août 2025</span><p>1337 Coding School, réseau 42, Rabat. Un mois de C et de scripts Shell.</p></li>
+          </ul>
         </div>
-        <div class="project-box" data-project="2">
-          <img src="images/ticket.png" alt="Project 2" />
-          <div class="project-layer">
-            <h4>Booking / Reservation System</h4>
-            <p>Online Reservation & Scheduling System</p>
-            <a href="#"><i class="bx bx-link-external"></i></a>
-          </div>
+        <div class="span-4 start-5 tl-col">
+          <h3>Diplômes et formation</h3>
+          <ul class="rows">
+            <li><span class="rows__name">Licence professionnelle, développement informatique</span><span class="rows__value">Depuis nov. 2025</span><p>Faculté des Sciences Aïn Chock, Casablanca.</p></li>
+            <li><span class="rows__name">Technicien spécialisé, développement full stack</span><span class="rows__value">2022 à 2024</span><p>ISTA Hay Hassani 1, OFPPT. Projets en React et Laravel : boutique en ligne, réservation, gestion de tâches.</p></li>
+            <li><span class="rows__name">Baccalauréat sciences physiques et chimie</span><span class="rows__value">2021</span><p>Option internationale. Arabe maternel, bonne maîtrise du français, anglais de base.</p></li>
+          </ul>
         </div>
-        <div class="project-box" data-project="3">
-          <img src="images/task management.jpg" alt="Project 3" />
-          <div class="project-layer">
-            <h4>Task Manager</h4>
-            <p>
-              Interactive Task Manager with data visualization and analytics.
-            </p>
-            <a href="#"><i class="bx bx-link-external"></i></a>
-          </div>
-        </div>
+        <a class="cv-sheet span-3 start-10" href="Ayoub-El-Bousairi-CV.pdf" target="_blank" rel="noopener" aria-label="Ouvrir le CV en PDF"><img src="img/cv-page-600.webp" srcset="img/cv-page-600.webp 600w, img/cv-page.webp 910w" sizes="(max-width: 639px) 100vw, 300px" width="910" height="1287" alt="Première page du CV d'Ayoub El Bousairi" loading="lazy" data-source="client" data-subject="Ayoub's one-page CV"></a>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Project Detail Modals -->
-    <div id="project-modal-1" class="project-modal">
-      <div class="modal-content">
-        <span class="close-modal">&times;</span>
-        <div class="modal-header">
-          <h2>E-Commerce Website</h2>
-          <p>Full-featured online store with modern design and functionality</p>
+  <section class="section" id="code" style="--hm: 2" aria-labelledby="code-h">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="code-h">Le code derrière les pages</h2>
+        <p>J'écris le HTML, le CSS et le JavaScript des pages, et le PHP avec Laravel côté serveur. Ce portfolio est codé à la main.</p>
+      </div>
+      <div class="grid grid--top fill">
+        <div class="span-6 stack-6 code-copy">
+          <ul class="ic-chip-row" aria-label="Langages et outils">
+            <li class="ic-chip ic-chip--lg"><img loading="lazy" class="ic ic-tall" src="assets/icons/html-5.svg" alt="" width="28" height="40">HTML5</li>
+            <li class="ic-chip ic-chip--lg"><img loading="lazy" class="ic" src="assets/icons/css.svg" alt="" width="40" height="40">CSS3</li>
+            <li class="ic-chip ic-chip--lg"><img loading="lazy" class="ic" src="assets/icons/javascript.svg" alt="" width="40" height="40">JavaScript</li>
+            <li class="ic-chip ic-chip--lg"><img loading="lazy" class="ic" src="assets/icons/react.svg" alt="" width="40" height="36">React</li>
+            <li class="ic-chip ic-chip--lg"><img loading="lazy" class="ic ic-wide" src="assets/icons/php.svg" alt="" width="40" height="21">PHP</li>
+            <li class="ic-chip ic-chip--lg"><img loading="lazy" class="ic" src="assets/icons/laravel.svg" alt="" width="39" height="40">Laravel</li>
+            <li class="ic-chip ic-chip--lg"><img loading="lazy" class="ic" src="assets/icons/mysql.svg" alt="" width="40" height="39">MySQL</li>
+            <li class="ic-chip ic-chip--lg"><img loading="lazy" class="ic" src="assets/icons/python.svg" alt="" width="40" height="40">Python</li>
+            <li class="ic-chip ic-chip--lg"><img loading="lazy" class="ic" src="assets/icons/git.svg" alt="" width="40" height="40">Git</li>
+            <li class="ic-chip ic-chip--lg"><img loading="lazy" class="ic" src="assets/icons/github.svg" alt="" width="40" height="39">GitHub</li>
+          </ul>
+          <ul class="rows rows--spec">
+            <li><span class="rows__name">Formation full stack</span><span class="rows__value">OFPPT, 2022 à 2024</span></li>
+            <li><span class="rows__name">C et scripts Shell</span><span class="rows__value">1337, 2025</span></li>
+            <li><span class="rows__name">Applications web en équipe</span><span class="rows__value">i-Gouvernancia</span></li>
+          </ul>
+          <p><a class="link" href="https://github.com/ael-bous" target="_blank" rel="noopener">Voir mon profil GitHub</a></p>
         </div>
-        <div class="modal-body">
-          <div class="modal-image">
-            <img src="images/e-commerce.jpg" alt="E-Commerce Website" />
-          </div>
-          <div class="modal-details">
-            <h3>Project Details</h3>
-            <p>
-              This e-commerce platform allows users to browse products, manage a
-              shopping cart, and place orders through a smooth checkout
-              experience.
-            </p>
-            <p>
-              The system includes an admin dashboard for managing products,
-              categories, and orders. It is built to provide a scalable and
-              secure online shopping solution.
-            </p>
-
-            <h3>Technologies Used</h3>
-            <div class="tech-stack">
-              <span class="tech-item">HTML5</span>
-              <span class="tech-item">CSS3</span>
-              <span class="tech-item">JavaScript</span>
-              <span class="tech-item">React</span>
-              <span class="tech-item">Laravel</span>
-              <span class="tech-item">REST API</span>
-              <span class="tech-item">Admin Dashboard</span>
-              <span class="tech-item">MySQL</span>
-            </div>
-            <!-- <div class="modal-links">
-              <a href="#" class="btn">Live Demo</a>
-              <a href="#" class="btn">GitHub</a>
-            </div> -->
-          </div>
+        <div class="panel device-stage span-6 start-7">
+          <div class="device"><img src="img/amiyas-mobile-product-300.webp" srcset="img/amiyas-mobile-product-300.webp 300w, img/amiyas-mobile-product.webp 390w" sizes="(max-width: 639px) 150px, 240px" width="390" height="844" alt="Fiche d'une machine laser sur téléphone, avec les boutons WhatsApp et Appeler" loading="lazy" data-source="client" data-subject="amiyasimport.com product page on a phone"></div>
+          <div class="device"><img src="img/amiyas-mobile-300.webp" srcset="img/amiyas-mobile-300.webp 300w, img/amiyas-mobile.webp 390w" sizes="(max-width: 639px) 150px, 240px" width="390" height="844" alt="amiyasimport.com sur téléphone : menu, diaporama de machines et chiffres de l'entreprise" loading="lazy" data-source="client" data-subject="amiyasimport.com on a phone"></div>
         </div>
       </div>
     </div>
+  </section>
 
-    <div id="project-modal-2" class="project-modal">
-      <div class="modal-content">
-        <span class="close-modal">&times;</span>
-        <div class="modal-header">
-          <h2>Booking / Reservation System</h2>
-          <p>Creative and modern portfolio to showcase work and skills</p>
-        </div>
-        <div class="modal-body">
-          <div class="modal-image">
-            <img src="images/ticket.png" alt="Portfolio Website" />
-          </div>
-          <div class="modal-details">
-            <h3>Project Details</h3>
-            <p>
-              This online booking system enables users to schedule services by
-              selecting available dates and times. It prevents double bookings
-              and ensures accurate availability management.
-            </p>
-            <p>
-              The platform provides an admin dashboard to manage reservations
-              and services. It is designed to streamline scheduling for
-              service-based businesses.
-            </p>
-
-            <h3>Technologies Used</h3>
-            <div class="tech-stack">
-              <span class="tech-item">HTML5</span>
-              <span class="tech-item">CSS3</span>
-              <span class="tech-item">JavaScript</span>
-              <span class="tech-item">React</span>
-              <span class="tech-item">Laravel</span>
-              <span class="tech-item">REST API</span>
-              <span class="tech-item">Role-Based Access</span>
-              <span class="tech-item">MySQL</span>
-            </div>
-            <!-- <div class="modal-links">
-              <a href="#" class="btn">Live Demo</a>
-              <a href="#" class="btn">GitHub</a>
-            </div> -->
-          </div>
-        </div>
+  <section class="section section--contact" id="message" style="--hm: 2" aria-labelledby="message-h">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="message-h">Écrire à Ayoub</h2>
+        <p>Pour une offre, un projet ou une question sur mon parcours, par le formulaire ou en direct.</p>
+      </div>
+      <div class="grid grid--top">
+        <form class="form span-6" action="https://formspree.io/f/mblwlbpj" method="post" data-endpoint="https://formspree.io/f/mblwlbpj" data-sending="Envoi en cours" data-sent="Votre message est envoyé. Je vous réponds par e-mail." data-failed="L'envoi n'a pas abouti. Écrivez-moi à elbousairiayoub.pro@gmail.com." novalidate>
+          <div class="field"><label for="f-name">Nom</label>
+            <input id="f-name" name="name" type="text" autocomplete="name" required aria-describedby="f-name-err">
+            <p class="field__error" id="f-name-err" hidden>Écrivez votre nom.</p></div>
+          <div class="field"><label for="f-email">E-mail</label>
+            <input id="f-email" name="email" type="email" autocomplete="email" inputmode="email" required aria-describedby="f-email-err">
+            <p class="field__error" id="f-email-err" hidden>Écrivez une adresse e-mail avec un @, comme nom@domaine.ma.</p></div>
+          <div class="field field--full"><label for="f-subject">Objet</label>
+            <input id="f-subject" name="subject" type="text" autocomplete="off" required aria-describedby="f-subject-err">
+            <p class="field__error" id="f-subject-err" hidden>Écrivez l'objet de votre message.</p></div>
+          <div class="field field--full"><label for="f-message">Message</label>
+            <textarea id="f-message" name="message" rows="5" required aria-describedby="f-message-err"></textarea>
+            <p class="field__error" id="f-message-err" hidden>Écrivez votre message.</p></div>
+          <input type="hidden" name="_subject" value="Nouveau message depuis le portfolio">
+          <div class="field--trap" aria-hidden="true"><label for="f-gotcha">Ne pas remplir</label><input id="f-gotcha" type="text" name="_gotcha" tabindex="-1" autocomplete="off"></div>
+          <div class="btn-row"><button class="btn btn--primary" type="submit">Envoyer un message</button></div>
+          <p class="form__status" role="status" data-form-status></p>
+        </form>
+        <ul class="channels span-6 start-7" aria-label="Contact direct">
+          <li><a href="mailto:elbousairiayoub.pro@gmail.com"><span class="ic-tile"><svg class="ic ic-svg ic-24" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"/><rect width="20" height="16" x="2" y="4" rx="2"/></svg></span><span class="ch__name">E-mail<small>elbousairiayoub.pro@gmail.com</small></span><svg class="ch__go" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10M7 17 17 7"/></svg></a></li>
+          <li><a href="https://wa.me/212630132957" target="_blank" rel="noopener"><span class="ic-tile"><img loading="lazy" class="ic" src="assets/icons/whatsapp.svg" alt="" width="40" height="40"></span><span class="ch__name">WhatsApp<small>Message direct</small></span><svg class="ch__go" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10M7 17 17 7"/></svg></a></li>
+          <li><a href="https://www.linkedin.com/in/ayoub-el-bousairi" target="_blank" rel="noopener"><span class="ic-tile"><img loading="lazy" class="ic" src="assets/icons/linkedin.svg" alt="" width="40" height="40"></span><span class="ch__name">LinkedIn<small>ayoub-el-bousairi</small></span><svg class="ch__go" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10M7 17 17 7"/></svg></a></li>
+          <li><a href="https://github.com/ael-bous" target="_blank" rel="noopener"><span class="ic-tile"><img loading="lazy" class="ic" src="assets/icons/github.svg" alt="" width="40" height="39"></span><span class="ch__name">GitHub<small>ael-bous</small></span><svg class="ch__go" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10M7 17 17 7"/></svg></a></li>
+        </ul>
       </div>
     </div>
+  </section>
+</main>
 
-    <div id="project-modal-3" class="project-modal">
-      <div class="modal-content">
-        <span class="close-modal">&times;</span>
-        <div class="modal-header">
-          <h2>Task Manager</h2>
-          <p>
-            Interactive Task Manager for data visualization and business
-            analytics
-          </p>
+<footer class="footer closing" id="contact" aria-labelledby="close-h">
+  <div class="wrap">
+    <div class="closing__cta close--type">
+      <div class="section-head">
+        <h2 id="close-h">Travailler avec Ayoub</h2>
+        <p class="t-lead">Basé à Casablanca. Le CV complet est en PDF, une page.</p>
+      </div>
+      <a class="btn btn--primary" href="#message">Envoyer un message<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a>
+    </div>
+    <div class="closing__links">
+      <div class="grid">
+        <div class="span-4 stack-4">
+          <a class="nav__logo" href="#top"><span class="mark" data-mark="stack" aria-hidden="true"></span>Ayoub El Bousairi</a>
+          <p class="footer__lede">Marketing digital et développement web, à Casablanca.</p>
         </div>
-        <div class="modal-body">
-          <div class="modal-image">
-            <img src="images/task management.jpg" alt="Business Dashboard" />
-          </div>
-          <div class="modal-details">
-            <h3>Project Details</h3>
-            <p>
-              This project management system helps teams organize projects and
-              track tasks efficiently. It includes user authentication, task
-              assignment, and status tracking in a clean and intuitive
-              interface.
-            </p>
-            <p>
-              The application supports role-based access, real-time updates, and
-              a responsive dashboard. It is designed to improve team
-              productivity and project visibility.
-            </p>
-
-            <h3>Technologies Used</h3>
-            <div class="tech-stack">
-              <span class="tech-item">HTML5</span>
-              <span class="tech-item">CSS3</span>
-              <span class="tech-item">JavaScript</span>
-              <span class="tech-item">React</span>
-              <span class="tech-item">Laravel</span>
-              <span class="tech-item">REST API</span>
-              <span class="tech-item">Laravel Sanctum</span>
-              <span class="tech-item">MySQL</span>
-            </div>
-            <!-- <div class="modal-links">
-              <a href="#" class="btn">Live Demo</a>
-              <a href="#" class="btn">GitHub</a>
-            </div> -->
-          </div>
-        </div>
+        <div class="span-2 footer__col"><h3>Pages</h3><ul><li><a href="#projet">Projet</a></li><li><a href="#marketing">Marketing</a></li><li><a href="#parcours">Parcours</a></li><li><a href="#code">Code</a></li></ul></div>
+        <div class="span-2 footer__col"><h3>Contact</h3><ul><li><a href="mailto:elbousairiayoub.pro@gmail.com">E-mail</a></li><li><a href="https://wa.me/212630132957" target="_blank" rel="noopener">WhatsApp</a></li><li><a href="https://www.linkedin.com/in/ayoub-el-bousairi" target="_blank" rel="noopener">LinkedIn</a></li></ul></div>
+        <div class="span-2 footer__col"><h3>Documents</h3><ul><li><a href="Ayoub-El-Bousairi-CV.pdf" download>CV en PDF</a></li><li><a href="https://github.com/ael-bous" target="_blank" rel="noopener">GitHub</a></li></ul></div>
+        <div class="span-2 footer__col"><h3>Projet</h3><ul><li><a href="https://amiyasimport.com" target="_blank" rel="noopener">amiyasimport.com</a></li></ul></div>
+      </div>
+      <div class="footer__legal">
+        <span>&copy; 2026 Ayoub El Bousairi</span>
+        <a href="confidentialite.html">Confidentialité</a>
+        <span class="t-small muted">Les noms et logos de produits sont des marques de leurs propriétaires.</span>
       </div>
     </div>
+  </div>
+</footer>
 
-    <section class="contact" id="contact">
-      <h2 class="heading">Contact <span>Me</span></h2>
-      <form
-        action="https://formspree.io/f/mblwlbpj"
-        method="POST"
-        id="contact-form"
-      >
-        <div class="input-box">
-          <input type="text" name="name" placeholder="Full Name" required />
-          <input
-            type="email"
-            name="email"
-            placeholder="Email Address"
-            required
-          />
-        </div>
-        <div class="input-box">
-          <input
-            type="text"
-            name="subject"
-            placeholder="Email Subject"
-            required
-          />
-        </div>
-        <textarea name="message" placeholder="Your Message" required></textarea>
-        <input type="submit" value="Send Message" class="btn" />
-        <div id="form-message" class="form-message"></div>
+<nav class="actionbar" aria-label="Action rapide">
+  <a class="btn btn--primary" href="#message">Envoyer un message</a>
+</nav>
 
-        <!-- Formspree hidden fields -->
-        <input type="hidden" name="_subject" value="New portfolio message!" />
-        <input type="text" name="_gotcha" style="display: none" />
-      </form>
-    </section>
-
-    <footer class="footer">
-      <div class="footer-text">
-        <p>Copyright &copy; 2023 by Ayoub EL Bousairi | All Rights Reserved.</p>
-      </div>
-      <div class="footer-iconTop">
-        <a href="#home"><i class="bx bx-up-arrow-alt"></i></a>
-      </div>
-    </footer>
-
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-    <script src="main.js"></script>
-  </body>
+<script type="module" src="assets/system.js"></script>
+<script type="module" src="assets/motion/motion.js"></script>
+<script type="module" src="assets/layout/layout.js"></script>
+<script type="module" src="assets/diagrams/mount.js"></script>
+</body>
 </html>

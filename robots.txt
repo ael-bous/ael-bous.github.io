@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://ael-bous.github.io/sitemap.xml

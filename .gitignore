@@ -1,4 +1,11 @@
+# local tooling and design-checker working files
 .taste-skill/
-shots/
+.impeccable/
 .playwright-mcp/
 .vscode/
+shots/
+node_modules/
+__pycache__/
+*.log
+.DS_Store
+Thumbs.db

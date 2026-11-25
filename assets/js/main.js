@@ -331,7 +331,10 @@ if (cursor && fineMQ.matches) {
 
 /* ---------- viewer ---------- */
 const viewer = $('[data-viewer]');
-const vImg = $('[data-viewer-img]');
+// the viewer image is created here so the page never ships an <img> without a source
+const vImg = document.createElement('img');
+vImg.alt = '';
+$('[data-viewer-fig]')?.prepend(vImg);
 const vCap = $('[data-viewer-cap]');
 let opener = null;
 $$('.piece__open').forEach((b) => b.addEventListener('click', () => {

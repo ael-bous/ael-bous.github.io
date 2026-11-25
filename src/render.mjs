@@ -301,7 +301,7 @@ ${path(t)}
 ${contact(t)}
 </main>
 <dialog class="viewer" data-viewer aria-labelledby="viewer-cap">
-  <figure><img alt="" data-viewer-img><figcaption class="mono" id="viewer-cap" data-viewer-cap></figcaption></figure>
+  <figure data-viewer-fig><figcaption class="mono" id="viewer-cap" data-viewer-cap></figcaption></figure>
   <button class="viewer__close mono" type="button" data-viewer-close>${t.dialog.close} ✕</button>
 </dialog>
 <div class="cursor" aria-hidden="true" data-cursor><span data-cursor-label>${t.work.view}</span></div>

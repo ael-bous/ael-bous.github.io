@@ -102,7 +102,7 @@ section[data-ground], .chapter[data-ground] { background: var(--bg); color: var(
 @media (hover: hover) and (pointer: fine) { .nav__links a:hover::after { transform: scaleX(1); transform-origin: left; } }
 .nav__aside { justify-self: end; display: flex; align-items: center; gap: 18px; }
 .lang { display: inline-flex; gap: 4px; text-decoration: none; font: 500 12px/1 var(--f-mono); letter-spacing: 0.06em; padding: 8px 2px; }
-.lang span { opacity: 0.45; transition: opacity 0.3s; }
+.lang span { opacity: 0.62; transition: opacity 0.3s; }
 .lang .is-on { opacity: 1; }
 @media (hover: hover) and (pointer: fine) { .lang:hover span { opacity: 1; } }
 .clock { display: inline-flex; align-items: center; gap: 8px; opacity: 0.8; font-size: 11px; font-variant-numeric: tabular-nums; }

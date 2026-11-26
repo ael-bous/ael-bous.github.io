@@ -15,30 +15,25 @@ The build needs Node 18 or newer and has no dependencies. Commit the generated f
 
 | File | Role |
 |---|---|
-| `src/content.mjs` | Every piece of text (FR and EN dictionaries) and the data lists: `site`, `screens`, `designs` |
+| `src/content.mjs` | Every piece of text (FR and EN dictionaries) and the data lists: `site`, `screens`, `showcase` |
 | `src/render.mjs` | Page templates |
-| `assets/css/main.css` | Styles, grounds (`data-ground="ink|paper|signal"`), responsive and reduced-motion rules |
+| `assets/css/main.css` | Styles, grounds (`data-ground="ink|paper"`), responsive and reduced-motion rules |
 | `assets/js/main.js` | Interactions and scroll scenes (GSAP, ScrollTrigger, SplitText and Lenis from jsDelivr, pinned versions) |
 | `assets/js/halftone.js` + `assets/shaders/halftone.frag` | WebGL2 halftone field behind the manifesto. It loads on approach and pauses off-screen |
 
 ## Adding work
 
-**A design (image).** Export it at 1100 px wide, then make a 560 px copy:
-`img/work/<file>-1100.webp` and `img/work/<file>-560.webp`.
+**A case study.** Add an entry to `cases.items` in both `fr` and `en`, with the same `id`. Fields: `title`, `tags`, `context`, `challenge`, `role`, `approach`, `execution`, `tools`, `deliverables`. Optional: `ongoing: true` for an "in progress" badge, `link: { href, label }` where `href` is a key of `site`. A missing field is simply left out. Cases are numbered from 02, after the Amiyas Import website (project 01).
 
-1. Add `{ key, kind: 'image', file, w, h, size: 'wide' | 'mid' | 'tall' }` to `designs` in `src/content.mjs`.
-2. Add the caption `[type, name]` under `work.designs` and the alt text under `work.alt`, in both `fr` and `en`.
-3. Each piece is placed on the 12-column grid by its index: `.p1` to `.p8` in `main.css`. A ninth piece needs a `.p9` rule.
-4. Rebuild.
+**Project media (images, videos, reels).** Add an entry to `showcase` in `src/content.mjs`:
+`{ kind: 'image' | 'video', case: '<case id>', src, poster?, w, h, title: { fr, en }, alt: { fr, en }, text?: { fr, en } }`.
+- With `case`, it appears inside that case study. Without it, it appears in a strip under the case studies.
+- Videos render with `controls muted playsinline preload="none"` and never autoplay.
+- The list is empty on purpose: nothing renders until real material exists, so there are no empty placeholders.
+
+**A tool or skill.** Add a row `[name, context, 'done' | 'practice' | 'grow']` to an `expertise.groups` entry, in both languages.
 
 **A site screen.** Add the image to `img/`, add the entry to `screens`, and add the matching step text under `work.steps` in both languages.
-
-**Video or reels (later).** `render.mjs` skips any `kind` other than `'image'`. Videos are not shown yet, so there are no empty placeholders on the site.
-
-To add videos, handle `kind: 'video'` in the `designs.map` of `render.mjs`:
-- Use `<video muted playsinline preload="none" poster="…">`.
-- Keep the poster to the piece's aspect ratio.
-- Do not autoplay when `prefers-reduced-motion` is set.
 
 ## Regenerating assets
 

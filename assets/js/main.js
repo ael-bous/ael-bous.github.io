@@ -99,16 +99,14 @@ const navLinks = $$('.nav__links a');
 const io = new IntersectionObserver((entries) => {
   for (const en of entries) if (en.isIntersecting) navLinks.forEach((l) => l.setAttribute('aria-current', l.dataset.link === en.target.id ? 'true' : 'false'));
 }, { rootMargin: '-45% 0px -50% 0px' });
-['work', 'skills', 'path', 'contact'].forEach((id) => { const s = document.getElementById(id); if (s) io.observe(s); });
-const heroIO = new IntersectionObserver(([en]) => { if (en.isIntersecting) navLinks.forEach((l) => l.setAttribute('aria-current', 'false')); }, { rootMargin: '-45% 0px -50% 0px' });
-heroIO.observe($('#top'));
+['top', 'work', 'expertise', 'path', 'contact'].forEach((id) => { const s = document.getElementById(id); if (s) io.observe(s); });
 
 if (fineMQ.matches) $$('.nav__label').forEach((l) => l.parentElement.addEventListener('pointerenter', () => scramble(l)));
 
 /* language switch keeps the reader's place */
 $$('[data-lang-switch], .menu__foot a[hreflang]').forEach((a) => a.addEventListener('click', () => {
   const current = navLinks.find((l) => l.getAttribute('aria-current') === 'true');
-  if (current) a.href = a.getAttribute('href').split('#')[0] + '#' + current.dataset.link;
+  if (current && current.dataset.link !== 'top') a.href = a.getAttribute('href').split('#')[0] + '#' + current.dataset.link;
 }));
 
 /* ---------- mobile menu ---------- */
@@ -204,6 +202,44 @@ toggle?.addEventListener('click', () => {
   gsap.to(lens, { ...to, duration: on ? 0.9 : 0.55, ease: on ? 'expo.inOut' : 'expo.out', onUpdate: setClip, onComplete: () => { lens.tr = 0; lens.vr = 0; } });
 });
 
+/* ---------- hero name: the second row widens (variable wdth axis) to span the full width ---------- */
+const rowB = $('.hero__row--b');
+if (rowB) {
+  const inkWidth = () => { const c = rowB.children; return c[c.length - 1].getBoundingClientRect().right - c[0].getBoundingClientRect().left; };
+  const measure = (w) => { rowB.style.setProperty('--wb', w); return inkWidth(); };
+  const fitName = () => {
+    if (!desktopMQ.matches) { rowB.style.removeProperty('--wb'); return; } // mobile keeps its own sizing
+    const target = rowB.clientWidth;
+    let lo = 62, hi = 125;
+    if (measure(hi) <= target) return; // even the widest cut fits: keep it
+    if (measure(lo) >= target) return; // already full at the narrowest cut
+    for (let i = 0; i < 7; i++) { const mid = (lo + hi) / 2; if (measure(mid) > target) hi = mid; else lo = mid; }
+    rowB.style.setProperty('--wb', lo.toFixed(2));
+  };
+  // on wide screens the first row ends early: centre the portrait in the space it leaves on the right
+  const hero = $('.hero');
+  const rowA = $('.hero__row--a');
+  const placePortrait = () => {
+    hero.style.removeProperty('--pl');
+    if (!desktopMQ.matches) return;
+    const c = rowA.children, W = hero.clientWidth;
+    const prev = rowA.style.getPropertyValue('--wa'); // measure at the final width, even mid-intro
+    rowA.style.setProperty('--wa', 125);
+    const aEnd = c[c.length - 1].getBoundingClientRect().right - hero.getBoundingClientRect().left;
+    if (prev) rowA.style.setProperty('--wa', prev); else rowA.style.removeProperty('--wa');
+    const pw = $('.hero__portrait').offsetWidth;
+    const free = W - aEnd;
+    if (free < pw * 0.9) return; // the name already fills the width: keep the default placement
+    const center = Math.max(W * 0.6, (aEnd + W) / 2);
+    hero.style.setProperty('--pl', `${Math.round(center - pw / 2)}px`);
+  };
+  const fitAll = () => { fitName(); placePortrait(); };
+  let fitT = 0;
+  fitAll();
+  document.fonts?.ready.then(fitAll);
+  addEventListener('resize', () => { clearTimeout(fitT); fitT = setTimeout(fitAll, 120); });
+}
+
 /* ---------- halftone field (WebGL2), loaded only near the manifesto ---------- */
 const field = $('[data-field]');
 if (field) {
@@ -225,8 +261,15 @@ function initScroll() {
   const words = $('[data-words]');
   if (words) {
     const split = SplitText.create(words, { type: 'words', wordsClass: 'w' });
-    gsap.fromTo(split.words, { opacity: 0.14 }, { opacity: 1, stagger: 0.08, ease: 'none', scrollTrigger: { trigger: '.manifesto', start: 'top top', end: 'bottom bottom', scrub: 0.4 } });
-    gsap.from('.manifesto__aside', { opacity: 0, y: 20, scrollTrigger: { trigger: '.manifesto', start: '45% center', end: '60% center', scrub: 0.4 } });
+    // overlapping word fades read as one wave; each key word draws its rule once it is lit
+    const tl = gsap.timeline({ scrollTrigger: { trigger: '.manifesto', start: 'top 85%', end: 'center 40%', scrub: 0.6 } });
+    const STEP = 0.32;
+    tl.fromTo(split.words, { opacity: 0.2, filter: 'blur(3px)' }, { opacity: 1, filter: 'blur(0px)', duration: 1, stagger: STEP, ease: 'power1.out' }, 0);
+    $$('.kw', words).forEach((kw) => {
+      const last = split.words.indexOf($$('.w', kw).pop());
+      tl.fromTo(kw, { '--kw': 0 }, { '--kw': 1, duration: 1.2, ease: 'power2.inOut' }, last * STEP + 0.4);
+    });
+    tl.from('.manifesto__aside span', { opacity: 0, y: 12, duration: 1, stagger: 0.25, ease: 'power2.out' }, split.words.length * STEP * 0.7);
   }
 
   // headings rise out of their own line masks
@@ -242,7 +285,7 @@ function initScroll() {
     ScrollTrigger.create({ trigger: l, start: 'top 90%', once: true, onEnter: () => scramble(span) });
   });
 
-  gsap.utils.toArray('.meta > div, .channels li, .row, .langs > div').forEach((el) => {
+  gsap.utils.toArray('.meta > div, .map__row, .case, .langs > div').forEach((el) => {
     gsap.from(el, { opacity: 0, y: 16, duration: 0.8, ease: 'expo.out', scrollTrigger: { trigger: el, start: 'top 92%', once: true } });
   });
 
@@ -262,7 +305,7 @@ function initScroll() {
       if (counter) scramble(counter, String(i + 1).padStart(2, '0'), { dur: 0.3 });
     };
     setActive(0);
-    const tl = gsap.timeline({ scrollTrigger: { trigger: chapter, start: 'top top', end: () => `+=${(screens.length - 1) * window.innerHeight * 0.9}`, pin: true, scrub: 0.6, onUpdate: (st) => setActive(Math.min(screens.length - 1, Math.round(st.progress * (screens.length - 1)))) } });
+    const tl = gsap.timeline({ scrollTrigger: { trigger: chapter, start: 'top top', end: () => `+=${(screens.length - 1) * window.innerHeight * 0.6}`, pin: true, scrub: 0.6, onUpdate: (st) => setActive(Math.min(screens.length - 1, Math.round(st.progress * (screens.length - 1)))) } });
     screens.forEach((s, i) => {
       if (!i) return;
       tl.fromTo(s, { clipPath: 'inset(100% 0% 0% 0% round 12px)' }, { clipPath: 'inset(0% 0% 0% 0% round 12px)', duration: 1, ease: 'power2.inOut' }, i - 1)
@@ -272,15 +315,16 @@ function initScroll() {
   });
 
   // the paper sheet is laid over the ink
-  gsap.fromTo('[data-sheet]', { clipPath: 'inset(0% 3% 0% 3% round 28px)' }, { clipPath: 'inset(0% 0% 0% 0% round 0px)', ease: 'none', scrollTrigger: { trigger: '[data-sheet]', start: 'top bottom', end: 'top 25%', scrub: 0.5 } });
+  gsap.fromTo('[data-sheet]', { clipPath: 'inset(0% 3% 0% 3% round 28px 28px 0px 0px)' }, { clipPath: 'inset(0% 0% 0% 0% round 28px 28px 0px 0px)', ease: 'none', scrollTrigger: { trigger: '[data-sheet]', start: 'top bottom', end: 'top 30%', scrub: 0.5 } });
 
-  // gallery: pieces drift at two speeds, like sheets on a table
-  mm.add('(min-width: 768px)', () => {
-    $$('[data-piece]').forEach((p, i) => {
-      const k = i % 2 ? 1 : 0.45;
-      gsap.fromTo(p, { y: 70 * k }, { y: -70 * k, ease: 'none', scrollTrigger: { trigger: p, start: 'top bottom', end: 'bottom top', scrub: true } });
-    });
-  });
+  // the communication cycle: the ring draws itself, the marker travels with the reading
+  const ring = $('.cy__ring--draw');
+  const orbit = $('[data-orbit]');
+  if (ring) {
+    ScrollTrigger.create({ trigger: '.expertise', start: 'top 75%', end: 'top 15%', scrub: 0.6, onUpdate: (st) => ring.style.setProperty('--draw', (1 - st.progress).toFixed(4)) });
+    ScrollTrigger.create({ trigger: '[data-caps]', start: 'top 70%', end: 'bottom 40%', scrub: 0.8, onUpdate: (st) => orbit?.style.setProperty('--orbit', `${(st.progress * 315).toFixed(2)}deg`) });
+    gsap.from('.cy__node', { opacity: 0, scale: 0.8, transformOrigin: 'center', duration: 0.8, stagger: 0.07, ease: 'expo.out', scrollTrigger: { trigger: '.expertise', start: 'top 55%', once: true } });
+  }
 
   // timeline rail fills with the reading
   const tlEl = $('[data-timeline]');
@@ -290,13 +334,9 @@ function initScroll() {
     $$('.tl', tlEl).forEach((li) => gsap.from(li, { opacity: 0, x: 24, duration: 0.9, ease: 'expo.out', scrollTrigger: { trigger: li, start: 'top 85%', once: true } }));
   }
 
-  // contact title
-  const ct = $('.contact__title');
-  if (ct) {
-    ct.setAttribute('aria-label', [...ct.children].map((c) => c.textContent.trim()).join(' '));
-    const s = SplitText.create(ct.children, { type: 'chars', aria: 'hidden' });
-    gsap.from(s.chars, { yPercent: 40, opacity: 0, duration: 1, stagger: 0.022, ease: 'expo.out', scrollTrigger: { trigger: ct, start: 'top 80%', once: true } });
-  }
+  // a case study opening or closing changes the page height: re-measure the triggers below it
+  let caseRefresh = 0;
+  $$('.case details').forEach((d) => d.addEventListener('toggle', () => { clearTimeout(caseRefresh); caseRefresh = setTimeout(() => ScrollTrigger.refresh(), 60); }));
 
   document.fonts?.ready.then(() => { ScrollTrigger.refresh(); updateNav(); });
   if (location.hash) { const t = document.getElementById(location.hash.slice(1)); if (t) setTimeout(() => lenis ? lenis.scrollTo(t, { immediate: true }) : t.scrollIntoView(), 120); }
@@ -317,40 +357,31 @@ if (motion) {
   screens.forEach((s, j) => { s.style.visibility = j ? 'hidden' : 'visible'; });
 }
 
-/* ---------- cursor label over the designs ---------- */
-const cursor = $('[data-cursor]');
-if (cursor && fineMQ.matches) {
-  const xTo = hasGsap ? gsap.quickTo(cursor, 'x', { duration: 0.45, ease: 'power3' }) : (v) => (cursor.style.left = v + 'px');
-  const yTo = hasGsap ? gsap.quickTo(cursor, 'y', { duration: 0.45, ease: 'power3' }) : (v) => (cursor.style.top = v + 'px');
-  addEventListener('pointermove', (e) => { xTo(e.clientX); yTo(e.clientY); }, { passive: true });
-  $$('.piece__open').forEach((b) => {
-    b.addEventListener('pointerenter', () => cursor.classList.add('is-on'));
-    b.addEventListener('pointerleave', () => cursor.classList.remove('is-on'));
+/* ---------- expertise: the capability being read lights its stage on the cycle ---------- */
+const cycle = $('[data-cycle]');
+const caps = $$('.cap');
+if (cycle && caps.length) {
+  const nodes = $$('.cy__node', cycle);
+  let hovered = null, inView = null;
+  const paint = () => {
+    const on = hovered || inView;
+    caps.forEach((c) => c.classList.toggle('is-on', c === on));
+    nodes.forEach((n) => n.classList.toggle('is-on', !!on && n.dataset.node === on.dataset.node));
+    cycle.classList.toggle('has-active', !!on);
+  };
+  const capIO = new IntersectionObserver((entries) => {
+    for (const en of entries) if (en.isIntersecting) inView = en.target;
+    paint();
+  }, { rootMargin: '-42% 0px -52% 0px' });
+  caps.forEach((c) => capIO.observe(c));
+  new IntersectionObserver(([en]) => { if (!en.isIntersecting) { inView = null; paint(); } }).observe($('[data-caps]'));
+  if (fineMQ.matches) caps.forEach((c) => {
+    c.addEventListener('pointerenter', () => { hovered = c; paint(); });
+    c.addEventListener('pointerleave', () => { hovered = null; paint(); });
   });
 }
 
-/* ---------- viewer ---------- */
-const viewer = $('[data-viewer]');
-// the viewer image is created here so the page never ships an <img> without a source
-const vImg = document.createElement('img');
-vImg.alt = '';
-$('[data-viewer-fig]')?.prepend(vImg);
-const vCap = $('[data-viewer-cap]');
-let opener = null;
-$$('.piece__open').forEach((b) => b.addEventListener('click', () => {
-  opener = b;
-  vImg.src = b.dataset.open; vImg.alt = b.dataset.alt; vImg.width = +b.dataset.w; vImg.height = +b.dataset.h;
-  vCap.textContent = b.dataset.caption;
-  cursor?.classList.remove('is-on');
-  viewer.showModal();
-  lenis?.stop();
-  if (!reduce) vImg.animate([{ opacity: 0, transform: 'scale(0.96)' }, { opacity: 1, transform: 'none' }], { duration: 320, easing: 'cubic-bezier(0.23, 1, 0.32, 1)' });
-}));
-$('[data-viewer-close]')?.addEventListener('click', () => viewer.close());
-viewer?.addEventListener('click', (e) => { if (e.target === viewer) viewer.close(); });
-viewer?.addEventListener('close', () => { lenis?.start(); opener?.focus(); });
-
-/* ---------- contact: copy, magnetic address ---------- */
+/* ---------- contact: copy the address ---------- */
 const copyBtn = $('[data-copy]');
 copyBtn?.addEventListener('click', async () => {
   const label = $('[data-copy-label]', copyBtn);
@@ -362,10 +393,3 @@ copyBtn?.addEventListener('click', async () => {
     setTimeout(() => { scramble(label, original); $('[data-copy-status]').textContent = ''; }, 2200);
   } catch { location.href = 'mailto:' + copyBtn.dataset.copy; }
 });
-const mail = $('[data-magnetic]');
-if (mail && fineMQ.matches && motion) {
-  const mx = gsap.quickTo(mail, 'x', { duration: 0.6, ease: 'power3' });
-  const my = gsap.quickTo(mail, 'y', { duration: 0.6, ease: 'power3' });
-  mail.addEventListener('pointermove', (e) => { const r = mail.getBoundingClientRect(); mx((e.clientX - r.left - r.width / 2) * 0.08); my((e.clientY - r.top - r.height / 2) * 0.25); });
-  mail.addEventListener('pointerleave', () => { mx(0); my(0); });
-}

@@ -252,7 +252,7 @@ export const i18n = {
         ['cv', 'CV', 'PDF à télécharger'],
       ],
     },
-    footer: { made: "Développé avec l'assistance de Claude Code · HTML, CSS, JavaScript, WebGL", privacy: 'Confidentialité', top: 'Haut de page', rights: 'Les marques citées appartiennent à leurs propriétaires.' },
+    footer: { privacy: 'Confidentialité', top: 'Haut de page', rights: 'Les marques citées appartiennent à leurs propriétaires.' },
     privacy: {
       title: 'Confidentialité',
       body: [
@@ -486,7 +486,7 @@ export const i18n = {
         ['cv', 'CV', 'PDF, in French'],
       ],
     },
-    footer: { made: 'Built with AI assistance from Claude Code · HTML, CSS, JavaScript, WebGL', privacy: 'Privacy', top: 'Back to top', rights: 'Brands mentioned belong to their owners.' },
+    footer: { privacy: 'Privacy', top: 'Back to top', rights: 'Brands mentioned belong to their owners.' },
     privacy: {
       title: 'Privacy',
       body: [

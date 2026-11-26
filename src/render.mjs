@@ -370,7 +370,6 @@ function contact(t) {
   </div>
   <footer class="footer wrap mono">
     <span>© 2026 ${site.name}</span>
-    <span>${t.footer.made}</span>
     <a href="${privacy}">${t.footer.privacy}</a>
     <a href="#top">${t.footer.top} ↑</a>
   </footer>
